@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
+import styles from '../Styles/styles';
 
 import {
   AppRegistry,
@@ -12,8 +14,6 @@ import {
   Alert,
   StatusBar,
 } from 'react-native';
-
-import { Actions } from 'react-native-router-flux';
 
 var data = [
         {symbol: '^IXIC', name: 'NASDAQ'},
@@ -133,43 +133,7 @@ class MainView extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <StatusBar
-                    barStyle="light-content"
-                />
-                <ListView
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={this.state.refreshing}
-                            onRefresh={this.onRefresh.bind(this)}
-                        />
-                    }
-                    style = {styles.listViewContainer}
-                    dataSource = {this.state.dataSource}
-                    renderRow={(rowData, sectionID, rowID) =>
-                        <StockItem
-                            stock={rowData}
-                            onPress={() => this.props.onPress(rowData)}
-                        />
-                    }
-                />
-
-                <View>
-                    <Text style={styles.marketHours}>
-                        {(() => {
-                            switch(getTime() >= '09:30' && getTime() <= '16:00'){
-                                case true: return "Market Open";
-                                case false: return "Market Closed"
-                            }
-                        })()}
-                    </Text>
-                </View>
-                <TouchableHighlight
-                    style = {[styles.button, styles.newButton]}
-                    onPress = {Actions.AddSearch}
-                    underlayColor = '#99d9f4'
-                >
-                    <Text style={styles.buttonText}> &#8801; </Text>
-                </TouchableHighlight>
+                <Text> Hello </Text>
             </View>
         )
     }
