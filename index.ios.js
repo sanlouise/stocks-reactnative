@@ -1,53 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
+import { Router, Scene } from 'react-native-router-flux';
+import MainView from './App/Components/Main';
+import styles from './App/Styles/styles';
+
 import {
   AppRegistry,
+  ListView,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight,
+  Navigator,
 } from 'react-native';
 
 class StockApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+
+      <Router navigationBarStyle={styles.navBar} titleStyle={styles.navTitle} sceneStyle={styles.routerScene}>
+        <Scene key="root">
+          <Scene key="Main" title="The Market" component={MainView} initial={true}/>
+        </Scene>
+      </Router>
+
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('StockApp', () => StockApp);
